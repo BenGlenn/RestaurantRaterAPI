@@ -1,6 +1,7 @@
 ﻿using RestaurantRaterAPI.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -38,6 +39,12 @@ namespace RestaurantRaterAPI.Controllers
         // Get by ID
 
         // Get All
+        [HttpGet]
+        public async Task<IHttpActionResult> GetAll()
+        {
+            List<Restaurant> restaurants = await _context.Restaurants.ToListAsync();
+            return Ok(restaurants);
+        }
 
         //-- Update (PUT)
 
